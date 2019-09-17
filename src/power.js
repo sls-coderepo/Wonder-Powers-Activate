@@ -1,4 +1,32 @@
-document.querySelector("#activate-flight").addEventListener("click", () => {
+document.querySelector(".btn-activate").addEventListener("click", (event) => {
+   const buttonId = event.target.id.split("-")[1]
+  activateButton(buttonId)
+})
+
+activateButton = (id) => {
+  document.querySelector("#" + id).classList.replace("disabled", "enabled");
+}
+
+document.querySelector("#activate-all").addEventListener("click", (event) => {
+   const power = document.querySelectorAll(".power");
+   power.forEach(element => {
+      activateButton(element.id)
+   });
+ })
+
+ deactivateButton = (id) => {
+   document.querySelector("#" + id).classList.replace("enabled", "disabled")
+ }
+
+ document.querySelector("#deactivate-all").addEventListener("click", (event) => {
+  const power = document.querySelectorAll(".power");
+  power.forEach(element => {
+     deactivateButton(element.id)
+  });
+})
+
+
+/* document.querySelector("#activate-flight").addEventListener("click", () => {
   flightHandler();
 });
 
@@ -56,3 +84,4 @@ deactivateAll = () => {
   flightMindReadingDisable();
   flightxrayDisable();
 };
+ */
